@@ -87,22 +87,22 @@ app.post("/repositories/:id/like", isValidUuid,(request, response) => {
   const { id }= request.params;
 
 
-  const repoIndex = repositories.findIndex(repositorie => repositorie.id === id);
+  const repositoryIndex = repositories.findIndex(repository => repository.id === id);
 
-  if(repoIndex < 0){
+  if(repositoryIndex < 0){
     return response.status(404).response.json({message:"Repository does not exist!"});
   }
 
-  const oldRepo = repositories[repoIndex];
+  const oldRepo = repositories[repositoryIndex];
 
-  const repo = {
+  const repository = {
     ...oldRepo,
     likes:oldRepo.likes + 1
   };
 
-  repositories[repoIndex] = repo;
+  repositories[repositoryIndex] = repository;
 
-  return response.json(repo)
+  return response.json(repository)
 });
 
 module.exports = app;
