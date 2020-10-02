@@ -79,7 +79,7 @@ app.delete("/repositories/:id", isValidUuid, (request, response) => {
 
   repositories.splice(repositoryIndex,1);
 
-  return response.status(204).json();
+  return response.send();
 });
 
 app.post("/repositories/:id/like", isValidUuid,(request, response) => {
